@@ -1,0 +1,1472 @@
+/* ==========================================================================
+   BRISA — Direction 03
+   "Breeze" — the trade wind that has determined how buildings are oriented
+   on this island for four hundred years.
+
+   Every rule in this file is scoped under .brisa so the theme cannot leak
+   into /cantera or /hoja. Warm dark ("noche") is the default; adding the
+   .dia class to the root swaps the hours, not the place.
+   ========================================================================== */
+
+.brisa {
+  /* ---- noche (default) ------------------------------------------------ */
+  --noche: #14100d;
+  --noche-2: #1d1814;
+  --arena: #ede4d6;
+  --arena-dim: #a2978a;
+  --rule: #322a23;
+  --sol: #e0813c;
+  --mar: #1e5f63;
+
+  --page-rgb: 20 16 13;
+  --arena-rgb: 237 228 214;
+  --sol-rgb: 224 129 60;
+
+  color-scheme: dark;
+
+  /* ---- type ----------------------------------------------------------- */
+  --t-cinema: clamp(4rem, 13vw, 15rem);
+  --t-title: clamp(2.25rem, 5vw, 4.5rem);
+  --t-lead: clamp(1.375rem, 2vw, 1.875rem);
+  --t-body: 1.0625rem;
+  --t-label: 0.75rem;
+
+  --serif: var(--font-brisa-serif), "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: var(--font-brisa-sans), "Figtree", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* ---- rhythm --------------------------------------------------------- */
+  --gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --band: clamp(5rem, 10vw, 9rem);
+  --band-low-top: clamp(7rem, 15vw, 13rem);
+  --band-low-bottom: clamp(3.5rem, 6vw, 5.5rem);
+  --breath: clamp(6rem, 12vh, 10rem);
+
+  /* ---- motion --------------------------------------------------------- */
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  --slow: 1200ms;
+  --hover: 500ms;
+
+  background: var(--noche);
+  color: var(--arena);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: var(--t-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* The page beneath the theme root — overscroll, and nothing else, is allowed
+   to be a different colour than the hour. Guarded by :has() so it can only
+   ever match a document that actually contains BRISA. */
+body:has(.brisa) {
+  background-color: #14100d;
+}
+body:has(.brisa.dia) {
+  background-color: #faf6ef;
+}
+
+/* ---- día ------------------------------------------------------------- */
+.brisa.dia {
+  --noche: #faf6ef;
+  --noche-2: #f2ebe0;
+  --arena: #1a1512;
+  --arena-dim: #6e645a;
+  --rule: #e2d8c9;
+  --sol: #c25f1c;
+  --mar: #17494d;
+
+  --page-rgb: 250 246 239;
+  --arena-rgb: 26 21 18;
+  --sol-rgb: 194 95 28;
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.brisa h1,
+.brisa h2,
+.brisa h3,
+.brisa h4 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.brisa p {
+  margin: 0;
+}
+
+.b-cinema {
+  font-family: var(--serif);
+  font-size: var(--t-cinema);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  font-weight: 400;
+}
+
+/* Cinema is for names — one or two words, set enormous. Sentences get the
+   display size instead, so the author keeps control of where lines break. */
+.b-display {
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 6.8vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+}
+
+.b-title {
+  font-family: var(--serif);
+  font-size: var(--t-title);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.b-lead {
+  font-family: var(--sans);
+  font-size: var(--t-lead);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.002em;
+}
+
+.b-body {
+  font-size: var(--t-body);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.b-label {
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Spanish is a second voice, never a translation: Instrument Serif italic,
+   at any size, in any context. */
+.es {
+  font-family: var(--serif);
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+.b-dim {
+  color: var(--arena-dim);
+}
+.b-sol {
+  color: var(--sol);
+}
+
+.b-measure {
+  max-width: 34ch;
+}
+.b-measure-wide {
+  max-width: 56ch;
+}
+.b-measure-body {
+  max-width: 62ch;
+}
+
+/* ==========================================================================
+   Structure
+   ========================================================================== */
+
+.b-shell {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.b-wrap {
+  padding-inline: var(--gutter);
+  margin-inline: auto;
+  max-width: 108rem;
+  width: 100%;
+}
+
+/* Content sits LOW in its band — more space above than below. It settles,
+   like heat. */
+.b-band {
+  padding-block: var(--band-low-top) var(--band-low-bottom);
+}
+
+.b-band-even {
+  padding-block: var(--band);
+}
+
+.b-band-alt {
+  background: var(--noche-2);
+}
+
+/* BREATH — a named primitive. Pure noche. Nothing in it. */
+.b-breath {
+  height: var(--breath);
+  background: var(--noche);
+}
+.b-breath-alt {
+  background: var(--noche-2);
+}
+
+.b-rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.b-split {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 900px) {
+  .b-split {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: end;
+  }
+}
+
+.b-stack-s > * + * {
+  margin-top: 1rem;
+}
+.b-stack-m > * + * {
+  margin-top: 1.75rem;
+}
+.b-stack-l > * + * {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ==========================================================================
+   Links, buttons, focus
+   ========================================================================== */
+
+.brisa a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--hover) var(--ease);
+}
+.brisa a:hover {
+  color: var(--sol);
+}
+
+.b-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--hover) var(--ease), color var(--hover) var(--ease);
+  padding-bottom: 0.12em;
+}
+.b-underline:hover,
+.b-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Buttons are never filled with sol. 1px arena outline pills that fill to
+   arena on hover. */
+.b-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.95em 1.9em;
+  border: 1px solid rgb(var(--arena-rgb) / 0.45);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--arena);
+  font-family: var(--sans);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--hover) var(--ease),
+    color var(--hover) var(--ease), border-color var(--hover) var(--ease);
+}
+.b-pill:hover {
+  background: var(--arena);
+  border-color: var(--arena);
+  color: var(--noche);
+}
+
+.brisa :focus-visible {
+  outline: 2px solid var(--sol);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.b-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.b-skip {
+  position: absolute;
+  left: var(--gutter);
+  top: 0.75rem;
+  z-index: 200;
+  transform: translateY(-200%);
+  background: var(--noche-2);
+  border: 1px solid var(--rule);
+  padding: 0.7em 1.2em;
+  border-radius: 999px;
+}
+.b-skip:focus {
+  transform: none;
+}
+
+/* ==========================================================================
+   Imagery
+   ========================================================================== */
+
+.b-figure {
+  position: relative;
+  overflow: hidden;
+  background: var(--noche-2);
+}
+.b-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.b-fill {
+  position: relative;
+  overflow: hidden;
+  background: var(--noche-2);
+}
+.b-fill img {
+  object-fit: cover;
+}
+
+/* THE one permitted gradient — the golden hour scrim. Used exactly twice:
+   the hero base and the footer top. */
+.b-goldenhour {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(var(--page-rgb) / 0.55) 55%,
+    var(--noche) 100%
+  );
+}
+
+/* Legibility scrims (flat, not gradients) keep text ≥4.5:1 over photographs. */
+.b-scrim-soft {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgb(var(--page-rgb) / 0.5);
+}
+.b-scrim-firm {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgb(var(--page-rgb) / 0.62);
+}
+
+/* Día puts dark text over photographs, so its scrims have to work harder to
+   hold the same 4.5:1. Same place, different hour — same legibility. */
+.brisa.dia .b-scrim-soft {
+  background: rgb(var(--page-rgb) / 0.64);
+}
+.brisa.dia .b-scrim-firm {
+  background: rgb(var(--page-rgb) / 0.8);
+}
+.brisa.dia .b-panel-veil {
+  background: rgb(var(--page-rgb) / 0.7);
+}
+.brisa.dia .b-sheet-cap {
+  background: rgb(var(--page-rgb) / 0.82);
+}
+.brisa.dia .b-nav {
+  background: rgb(var(--page-rgb) / 0.55);
+}
+.brisa.dia .b-nav[data-stuck="true"] {
+  background: rgb(var(--page-rgb) / 0.92);
+}
+
+/* Terrace crop — a view framed by a deep overhang. 2–3 per page, maximum. */
+.b-terrace {
+  margin-inline: auto;
+  max-width: 108rem;
+  padding-inline: var(--gutter);
+}
+.b-terrace-frame {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background: var(--noche-2);
+}
+.b-terrace-caption {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--arena-dim);
+  max-width: 34ch;
+}
+@media (min-width: 1100px) {
+  .b-terrace {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+  }
+  .b-terrace-frame {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .b-terrace-caption {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 0;
+    text-align: right;
+    padding-top: 0.4rem;
+  }
+}
+
+/* ==========================================================================
+   Nav
+   ========================================================================== */
+
+.b-nav-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 60vh;
+  pointer-events: none;
+}
+
+.b-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgb(var(--page-rgb) / 0.3);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  border-bottom: 1px solid transparent;
+  transition: background-color 700ms var(--ease), border-color 700ms var(--ease),
+    backdrop-filter 700ms var(--ease);
+}
+.b-nav[data-stuck="true"] {
+  background: rgb(var(--page-rgb) / 0.86);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  border-bottom-color: var(--rule);
+}
+
+.b-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: clamp(0.85rem, 1.6vw, 1.3rem);
+}
+
+.b-brand {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.b-nav-links {
+  display: none;
+  align-items: center;
+  gap: clamp(1.4rem, 2.6vw, 2.6rem);
+}
+@media (min-width: 860px) {
+  .b-nav-links {
+    display: flex;
+  }
+}
+
+.b-nav-link {
+  position: relative;
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-block: 0.4em;
+}
+.b-nav-link[aria-current="page"] {
+  color: var(--arena);
+}
+.b-nav-link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -0.85em;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sol);
+  transform: translateY(-50%);
+}
+
+.b-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.b-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--arena-dim);
+  padding: 0.5em 0.95em;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--hover) var(--ease), border-color var(--hover) var(--ease);
+}
+.b-toggle:hover {
+  color: var(--arena);
+  border-color: rgb(var(--arena-rgb) / 0.45);
+}
+.b-toggle-on {
+  color: var(--arena);
+}
+.b-toggle-sep {
+  opacity: 0.4;
+}
+
+@media (max-width: 430px) {
+  .b-brand {
+    font-size: 1.125rem;
+  }
+  .b-toggle {
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    padding: 0.45em 0.7em;
+    gap: 0.4em;
+  }
+  .b-nav-inner {
+    gap: 0.75rem;
+  }
+}
+
+.b-burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.6rem;
+  height: 2.6rem;
+  align-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+@media (min-width: 860px) {
+  .b-burger {
+    display: none;
+  }
+}
+.b-burger span {
+  display: block;
+  width: 15px;
+  height: 1px;
+  background: var(--arena);
+  transition: transform 400ms var(--ease), opacity 300ms var(--ease);
+}
+.b-burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(3px) rotate(45deg);
+}
+.b-burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.b-burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+.b-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--noche);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem var(--gutter) 3rem;
+  gap: 0.2rem;
+  animation: b-menu-in 500ms var(--ease) both;
+}
+@keyframes b-menu-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.b-menu a {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 12vw, 4.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.b-menu-meta {
+  margin-top: 2.5rem;
+  color: var(--arena-dim);
+}
+
+/* Scroll-progress sol line — CSS only, no listeners. */
+.b-progress {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--sol);
+  transform-origin: 0 50%;
+  z-index: 101;
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .b-progress {
+    display: block;
+    animation: b-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes b-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ==========================================================================
+   Hero — the Hour
+   ========================================================================== */
+
+.b-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.b-hero-media {
+  position: absolute;
+  inset: 0;
+}
+.b-hero-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1400ms var(--ease);
+}
+.b-hero-layer[data-active="true"] {
+  opacity: 1;
+}
+.b-hero-layer img {
+  object-fit: cover;
+}
+
+.b-hero-body {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(3.5rem, 8vh, 7rem);
+  padding-top: 8rem;
+}
+
+.b-hero-foot {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(1.75rem, 3.5vw, 3rem);
+}
+@media (min-width: 1000px) {
+  .b-hero-foot {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(2rem, 6vw, 6rem);
+  }
+}
+
+.b-hero-label {
+  color: var(--sol);
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.b-hora {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6em;
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arena-dim);
+}
+.b-hora-moment {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--arena);
+}
+.b-hero-hora {
+  flex: none;
+  padding-bottom: 0.35rem;
+}
+
+/* Cinema entrance — per WORD, not per character. */
+.b-words {
+  display: inline;
+}
+.b-word {
+  display: inline-block;
+  white-space: pre;
+}
+.b-word > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(12px);
+  transition: opacity 1400ms var(--ease), transform 1400ms var(--ease),
+    filter 1400ms var(--ease);
+  transition-delay: var(--wd, 0ms);
+}
+.b-words[data-in="true"] .b-word > span {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ==========================================================================
+   Reveal
+   ========================================================================== */
+
+.b-reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  filter: blur(6px);
+  transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease),
+    filter var(--slow) var(--ease);
+  transition-delay: var(--rd, 0ms);
+  will-change: opacity, transform;
+}
+.b-reveal[data-in="true"] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Insurance: if scripting is off, nothing that waits for an observer stays
+   hidden. */
+@media (scripting: none) {
+  .b-reveal,
+  .b-word > span {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ==========================================================================
+   The Passage
+   ========================================================================== */
+
+.b-passage {
+  position: relative;
+}
+
+.b-panel {
+  display: grid;
+  grid-template-areas: "stack";
+  grid-template-rows: 178svh;
+  position: relative;
+}
+.b-panel > * {
+  grid-area: stack;
+  align-self: start;
+}
+
+@media (max-width: 700px) {
+  .b-panel {
+    grid-template-rows: 150svh;
+  }
+}
+
+.b-panel-media {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--noche-2);
+}
+.b-panel-media img {
+  object-fit: cover;
+}
+.b-panel-veil {
+  position: absolute;
+  inset: 0;
+  background: rgb(var(--page-rgb) / 0.5);
+}
+
+.b-panel-caption {
+  position: sticky;
+  top: 34vh;
+  z-index: 2;
+  padding-inline: var(--gutter);
+  margin-inline: auto;
+  max-width: 108rem;
+  width: 100%;
+  pointer-events: none;
+}
+.b-panel-caption > * {
+  pointer-events: auto;
+}
+.b-panel-index {
+  color: var(--sol);
+  margin-bottom: 0.9rem;
+}
+.b-panel-title {
+  display: block;
+  max-width: 14ch;
+}
+.b-panel-meta {
+  margin-top: 1.4rem;
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arena);
+  max-width: 40ch;
+}
+.b-panel-more {
+  margin-top: 1.6rem;
+  display: inline-block;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .b-panel-caption {
+      animation: b-release linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 60%;
+    }
+    @keyframes b-release {
+      from {
+        opacity: 1;
+        filter: blur(0);
+      }
+      to {
+        opacity: 0;
+        filter: blur(8px);
+      }
+    }
+    .b-drift img {
+      animation: b-drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes b-drift {
+      from {
+        transform: scale(1.08);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Trade Wind marquee
+   ========================================================================== */
+
+.b-marquee {
+  overflow: hidden;
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  --marquee-play: running;
+}
+.b-marquee:hover {
+  --marquee-play: paused;
+}
+.b-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: b-wind 70s linear infinite;
+  animation-play-state: var(--marquee-play);
+}
+.b-marquee-run {
+  display: flex;
+  align-items: baseline;
+  flex: none;
+}
+.b-marquee-item {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--t-title);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  padding-inline: 0.4em;
+}
+.b-diamond {
+  color: var(--sol);
+  font-size: 0.5em;
+  font-style: normal;
+  transform: translateY(-0.25em);
+  display: inline-block;
+}
+@keyframes b-wind {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.b-marquee-static {
+  display: none;
+  padding-inline: var(--gutter);
+}
+.b-marquee-static .b-marquee-item {
+  font-size: clamp(1.35rem, 3.5vw, 2.25rem);
+  white-space: normal;
+}
+
+/* ==========================================================================
+   Contact sheet
+   ========================================================================== */
+
+.b-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.35rem;
+}
+.b-filter {
+  border: 0;
+  background: transparent;
+  padding: 0.2em 0.35em;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--arena-dim);
+  transition: color var(--hover) var(--ease), font-style 0ms;
+}
+.b-filter:hover {
+  color: var(--arena);
+}
+/* Filtering changes the letterform. That is the whole interaction. */
+.b-filter[aria-pressed="true"] {
+  font-style: normal;
+  color: var(--sol);
+}
+.b-filter-sep {
+  color: var(--rule);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  user-select: none;
+}
+
+.b-sheet {
+  columns: 3;
+  column-gap: clamp(0.75rem, 1.6vw, 1.5rem);
+}
+@media (max-width: 980px) {
+  .b-sheet {
+    columns: 2;
+  }
+}
+@media (max-width: 560px) {
+  .b-sheet {
+    columns: 1;
+  }
+}
+
+/* A revealed cell is still a column child: it must not break either. */
+.b-sheet > .b-reveal {
+  break-inside: avoid;
+  margin-bottom: clamp(0.75rem, 1.6vw, 1.5rem);
+}
+.b-sheet > .b-reveal > .b-sheet-item {
+  margin-bottom: 0;
+}
+
+.b-sheet-item {
+  break-inside: avoid;
+  margin-bottom: clamp(0.75rem, 1.6vw, 1.5rem);
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--noche-2);
+  transition: opacity var(--hover) var(--ease);
+}
+.b-sheet-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 600ms var(--ease), transform 900ms var(--ease);
+}
+.b-sheet-cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.1rem 1.2rem;
+  background: rgb(var(--page-rgb) / 0.66);
+  opacity: 0;
+  transition: opacity 600ms var(--ease);
+}
+.b-sheet-cap-title {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  display: block;
+}
+.b-sheet-cap-meta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena-dim);
+}
+
+@media (hover: hover) {
+  /* The grid responds to attention. */
+  .b-sheet:has(.b-sheet-item:hover) .b-sheet-item:not(:hover) {
+    opacity: 0.45;
+  }
+  .b-sheet-item:hover img {
+    filter: saturate(1.1) brightness(1.06);
+  }
+  .b-sheet-item:hover .b-sheet-cap,
+  .b-sheet-item:focus-visible .b-sheet-cap {
+    opacity: 1;
+  }
+}
+@media (hover: none) {
+  .b-sheet-cap {
+    opacity: 1;
+    background: rgb(var(--page-rgb) / 0.55);
+  }
+}
+
+/* ==========================================================================
+   Walkthrough (project detail)
+   ========================================================================== */
+
+.b-arrival {
+  position: relative;
+  height: 92svh;
+  min-height: 30rem;
+  overflow: hidden;
+}
+.b-arrival img {
+  object-fit: cover;
+}
+
+.b-plate {
+  position: relative;
+  margin-inline: auto;
+  max-width: 108rem;
+  padding-inline: var(--gutter);
+}
+.b-plate-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--noche-2);
+}
+.b-plate-narrow {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+.b-plate-mid {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+.b-plate-caption {
+  margin-top: 0.9rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--arena-dim);
+  font-size: 1rem;
+}
+
+.b-arrival-body {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+/* The sequence breathes: generous, uneven, unhurried. */
+.b-seq > * + * {
+  margin-top: clamp(4rem, 10vw, 9rem);
+}
+
+.b-facts {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+.b-facts dd {
+  margin: 0;
+}
+.b-fact {
+  display: grid;
+  gap: 0.35rem 2rem;
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 720px) {
+  .b-fact {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+.b-fact-key {
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arena-dim);
+}
+.b-fact-val {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.b-fact-val .b-status {
+  color: var(--sol);
+}
+
+.b-next {
+  position: relative;
+  min-height: 78svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.b-next img {
+  object-fit: cover;
+  transition: transform 1400ms var(--ease);
+}
+.b-next:hover img {
+  transform: scale(1.04);
+}
+.b-next-body {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+/* ==========================================================================
+   Story / team / contact
+   ========================================================================== */
+
+.b-era {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  border-top: 1px solid var(--rule);
+}
+@media (min-width: 900px) {
+  .b-era {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+  }
+}
+.b-era-period {
+  color: var(--sol);
+}
+.b-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.b-highlights li {
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--arena-dim);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.b-highlights li:first-child {
+  border-top: 1px solid var(--rule);
+}
+
+.b-names {
+  display: grid;
+  gap: 0;
+}
+.b-name-row {
+  display: grid;
+  gap: 0.4rem 2rem;
+  padding-block: clamp(1.1rem, 2.4vw, 1.8rem);
+  border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 760px) {
+  .b-name-row {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+.b-name-row:first-child {
+  border-top: 1px solid var(--rule);
+}
+.b-name-year {
+  color: var(--sol);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+.b-name-title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.b-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+@media (min-width: 900px) {
+  .b-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.b-stat-value {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.b-stat-label {
+  margin-top: 0.75rem;
+  color: var(--arena-dim);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  max-width: 18ch;
+}
+
+.b-principal {
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  border-top: 1px solid var(--rule);
+}
+.b-principal-epithet {
+  display: block;
+  color: var(--sol);
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  margin-top: 0.4rem;
+}
+.b-principal-grid {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+@media (min-width: 900px) {
+  .b-principal-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+}
+
+.b-cta {
+  position: relative;
+  min-height: 92svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.b-cta-body {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: 7rem clamp(3.5rem, 8vh, 7rem);
+}
+.b-contact-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem clamp(2rem, 5vw, 4rem);
+  align-items: baseline;
+}
+.b-contact-line {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.b-form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 40rem;
+}
+.b-field {
+  display: grid;
+  gap: 0.5rem;
+}
+.b-field label {
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arena-dim);
+}
+.b-field input,
+.b-field textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--arena);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  padding: 0.6rem 0;
+  transition: border-color var(--hover) var(--ease);
+  border-radius: 0;
+}
+.b-field input:hover,
+.b-field textarea:hover,
+.b-field input:focus,
+.b-field textarea:focus {
+  border-bottom-color: rgb(var(--arena-rgb) / 0.5);
+}
+.b-field textarea {
+  resize: vertical;
+  min-height: 7rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.b-footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(9rem, 20vh, 16rem);
+}
+.b-footer-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.b-footer-media img {
+  object-fit: cover;
+}
+.b-footer-body {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.b-footer-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+@media (min-width: 860px) {
+  .b-footer-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+.b-footer-nav {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+.b-footer-rule {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  justify-content: space-between;
+  color: var(--arena-dim);
+  font-size: 0.8125rem;
+}
+
+/* ==========================================================================
+   Reduced motion — the site still breathes, it just stops drifting.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .brisa *,
+  .brisa *::before,
+  .brisa *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 250ms !important;
+    scroll-behavior: auto !important;
+  }
+  .b-reveal {
+    transform: none;
+    filter: none;
+    transition: opacity 250ms linear;
+  }
+  .b-word > span {
+    transform: none;
+    filter: none;
+    transition: opacity 250ms linear;
+  }
+  .b-hero-layer {
+    transition: opacity 250ms linear;
+  }
+  .b-progress {
+    display: none;
+  }
+  .b-marquee-track {
+    display: none;
+  }
+  .b-marquee-static {
+    display: block;
+  }
+  .b-marquee {
+    padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .b-next:hover img {
+    transform: none;
+  }
+  /* position: sticky is not motion — the Passage keeps working. */
+}

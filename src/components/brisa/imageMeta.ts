@@ -1,0 +1,105 @@
+// Intrinsic pixel dimensions of every asset in /public/images/full, measured
+// at build-authoring time. The contact sheet needs true aspect ratios so the
+// masonry never crops a photograph — BRISA presents images uncropped.
+
+const DIMS: Record<string, [number, number]> = {
+  "01e8b963_Stocksy_txp9c995bd1cMI100_Large_1192042.jpg": [1536, 2000],
+  "0998c0d9_ARCHITECHNIKA_LOGO_HEADER_small.jpg": [2000, 1257],
+  "0a5fbde2_Stocksy_txp9c995bd1cMI100_Large_1192029.jpg": [1298, 2000],
+  "0e9cb003_HYBIRD-ASHFORD__2815_29.jpg": [2000, 1404],
+  "0ea28915_Picture1.jpg": [2000, 1113],
+  "0f17b2da_HIBIRD_-_ASHFORD_12.jpg": [2000, 1345],
+  "11af11e0_Picture1.jpg": [2000, 1762],
+  "1c546158_Image5.jpg": [2000, 1125],
+  "1fd40339_Image3.jpg": [2000, 1125],
+  "2042e502_Picture2.jpg": [2000, 1060],
+  "24791f2f_EBA_VEGA_BAJA__283_29.jpg": [2000, 1500],
+  "26d13148_PS-GIP_CONCEPTUAL_SCHEMATIC_Photo_-_2.jpg": [2000, 1125],
+  "275e66f8_Picture2.jpg": [2000, 1075],
+  "28a81721_Picture2.jpg": [2000, 2000],
+  "2ce28b74_abitta-elevator-floor.jpg": [2000, 1296],
+  "311079db_Tranquil_sunset_over_luxury_residences.jpg": [2000, 1333],
+  "31bdbebc_PS-GIP_CONCEPTUAL_SCHEMATIC_Photo_-_4.jpg": [2000, 1125],
+  "3d087223_Stocksy_txp9c995bd1cMI100_Large_1184002.jpg": [1333, 2000],
+  "3d6b2674_Stocksy_txp9c995bd1cMI100_Large_1184005.jpg": [1333, 2000],
+  "3d7b18cc_Picture2.jpg": [2000, 1184],
+  "3e67d77e_Picture2.jpg": [2000, 1166],
+  "3fe1cd5d_HIBIRD_-_ASHFORD__287_29.jpg": [2000, 1405],
+  "42327596_Stocksy_txp9c995bd1cMI100_Large_1188910__281_29.jpg": [2000, 1898],
+  "426667a5_Picture0.jpg": [2000, 1812],
+  "459ef4c0_Picture2.jpg": [2000, 1090],
+  "45b2bd4a_Arch-Hospital_Hermanos_Melendez._2.jpg": [2000, 1501],
+  "4c39b6ed_Stocksy_txp9c995bd1cMI100_Large_1192028.jpg": [1680, 2000],
+  "4eed84d9_PS-GIP_CONCEPTUAL_SCHEMATIC_Photo_-_3.jpg": [2000, 1125],
+  "5176a979_HIBIRD_-_ASHFORD__288_29.jpg": [2000, 1394],
+  "57630971_Image1.jpg": [2000, 1125],
+  "58c036fc_download_copy_2.jpg": [1783, 2000],
+  "5b213fb7_Stocksy_txp9c995bd1cMI100_Large_1188910.jpg": [2000, 1898],
+  "5ee0c065_EBA-VEGA_BAJA__281_29.jpg": [2000, 1500],
+  "6383544c_ECO_140-14_1_-_Photo.jpg": [2000, 1125],
+  "64c202aa_3.jpg": [2000, 1125],
+  "675a15b6_HYBIRD-ASHFORD__2810_29.jpg": [2000, 1409],
+  "684c6a5d_Image4.jpg": [2000, 1125],
+  "69e2f5d6_Picture1.jpg": [2000, 1121],
+  "69f3f5bd_Stocksy_txp9c995bd1cMI100_Large_1183959.jpg": [1333, 2000],
+  "6bc24b01_HIBIRD-ASHFORD_9.jpg": [1499, 2000],
+  "6d47c2ff_HIBIRD-ASHFORD_9.jpg": [1499, 2000],
+  "6e983110_abitta-outside-building-night.jpg": [2000, 1500],
+  "7066d471_HYBIRD_-_ASHFORD__286_29.jpg": [2000, 1401],
+  "70944de6_BAYAMON_MEDICAL_PLAZA__285_29.jpg": [2000, 1339],
+  "728865f4_1.jpg": [2000, 1125],
+  "7812306a_Picture3.jpg": [2000, 1022],
+  "7cdb80eb_Twin_towers_with_elegant_entrance.jpg": [1333, 2000],
+  "7d3998df_4.jpg": [2000, 1125],
+  "8017eb41_abitta-balcony-view.jpg": [2000, 1287],
+  "83699508_Picture1.jpg": [2000, 1113],
+  "8938e3a0_PS-GIP_CONCEPTUAL_SCHEMATIC_Photo_-_1.jpg": [2000, 1125],
+  "89748d5a_IMG_3187.jpg": [2000, 1500],
+  "8c16f951_Arch-BD.jpg": [2000, 1363],
+  "9479beff_EBA_VEGA_BAJA__283_29.jpg": [2000, 1500],
+  "96bf1e64_Picture1.jpg": [2000, 1099],
+  "97ba6b7d_Image1.jpg": [2000, 1125],
+  "98882e4b_Picture3.jpg": [2000, 1178],
+  "9ea0fc44_IMG_3182.jpg": [2000, 1500],
+  "a08bef16_Picture1.jpg": [2000, 1200],
+  "a40310c1_ECO_140-14_2_-_Photo.jpg": [2000, 1125],
+  "a7e05398_Screenshot_2026-01-02_at_1.16.00_E2_80_AFPM.jpg": [2000, 1304],
+  "a8094ca9_IMG_3196.jpg": [1500, 2000],
+  "afd68f1e_5.jpg": [2000, 1125],
+  "b8bb1657_ChatGPT_Image_Jan_2_2C_2026_2C_02_10_34_PM.jpg": [2000, 1333],
+  "b9913c28_HYBIRD_-_ASHFORD__285_29.jpg": [2000, 1108],
+  "b9ac8a0f_Picture3.jpg": [2000, 1121],
+  "c21c3cea_Image2.jpg": [2000, 1125],
+  "c2375cf2_Arch-BD_8.jpg": [2000, 1017],
+  "c6a69762_Stocksy_txp9c995bd1cMI100_Large_1183977.jpg": [1333, 2000],
+  "c8d95e60_abitta-main-entrance.jpg": [2000, 1297],
+  "d40d9b5a_Picture1.jpg": [2000, 1125],
+  "d53a968a_PS-GIP_CONCEPTUAL_SCHEMATIC_Photo_-_1.jpg": [2000, 1125],
+  "d5887219_Picture1.jpg": [2000, 1792],
+  "d6991307_ECO_140-14_2_-_Photo.jpg": [2000, 1125],
+  "d85c9fa2_Stocksy_txp9c995bd1cMI100_Large_1192032.jpg": [1333, 2000],
+  "e27173c7_Picture1.jpg": [2000, 1792],
+  "e37e6712_Picture0.jpg": [2000, 1812],
+  "e5db0a4f_Picture2.jpg": [2000, 1121],
+  "eb9d99d1_Stocksy_txp9c995bd1cMI100_Large_1183996.jpg": [1333, 2000],
+  "eebbc48f_Picture3.jpg": [1253, 2000],
+  "fb64a474_Stocksy_txp9c995bd1cMI100_Large_1192030.jpg": [1333, 2000],
+  "fbf13053_Picture1.jpg": [2000, 1099],
+  "fcf61b0e_HYBIRD-ASHFORD__2811_29.jpg": [2000, 1115],
+  "fd4cb592_HIBIRD_-_ASHFORD__289_29.jpg": [2000, 1500],
+  "ff713f69_ECO_140-14_9_-_Photo.jpg": [2000, 1125],
+};
+
+export function dims(file: string): { width: number; height: number } {
+  const d = DIMS[file];
+  return d ? { width: d[0], height: d[1] } : { width: 2000, height: 1333 };
+}
+
+export function ratio(file: string): number {
+  const { width, height } = dims(file);
+  return width / height;
+}
+
+export function isPortrait(file: string): boolean {
+  return ratio(file) < 0.98;
+}
