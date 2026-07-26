@@ -1,0 +1,11 @@
+:HL["/architechnika-mockups/_next/static/chunks/0puffz3j6lo-0.css","style"]
+:HL["/architechnika-mockups/_next/static/chunks/3jn6cy8xkyggs.css","style"]
+:HL["/architechnika-mockups/_next/static/media/0ada71b763703d9d-s.p.0bgqpv90abx9d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/23f1a98b08006014-s.p.0s5mkn35-hrc5.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/2b7d3311b69a4dca-s.p.1elj1f4z6aq4a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/54fc36028e2bb174-s.p.20jfceqj9zyw9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/7b27d9904b50e540-s.p.3szkwhi_rfrst.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/ab57efd000576a30-s.p.3fofz6dws3mg0.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/b8d1f0a88dfecec3-s.p.1e3bxj0ebt1gg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/d38f3bca7db33566-s.p.0op912u62qdhl.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"cantera","param":null,"prefetchHints":0,"slots":{"children":{"name":"portfolio","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"raymond-dalmau-coliseum","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"OBWtSOe13bivoeBQl4_cm"}

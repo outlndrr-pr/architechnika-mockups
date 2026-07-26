@@ -1,0 +1,9 @@
+:HL["/architechnika-mockups/_next/static/chunks/0puffz3j6lo-0.css","style"]
+:HL["/architechnika-mockups/_next/static/chunks/13-s2d3os1hzn.css","style"]
+:HL["/architechnika-mockups/_next/static/media/400bf8aa837fcb7e-s.p.19g-lkcx7iw64.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/ccf27e5a7366fb23-s.p.1icgra-w5i50b.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/e41d5df559864f9e-s.p.1g73gv09-xcb6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/f7aa21714c1c53f8-s.p.0-95eo-012xnf.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/fc0a7394b875fa43-s.p.2ytmazkdrg7t9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"brisa","param":null,"prefetchHints":0,"slots":{"children":{"name":"portfolio","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"raymond-dalmau-coliseum","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"OBWtSOe13bivoeBQl4_cm"}

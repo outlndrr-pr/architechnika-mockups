@@ -1,0 +1,11 @@
+:HL["/architechnika-mockups/_next/static/chunks/0puffz3j6lo-0.css","style"]
+:HL["/architechnika-mockups/_next/static/chunks/25_t1_y837zba.css","style"]
+:HL["/architechnika-mockups/_next/static/media/21ca8f3f56c22ca2-s.p.1cp9-4nby68jc.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/36363bfb06833f56-s.p.38hmww4cj4vme.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/4ae66b896b591e96-s.p.0_kz_z3o_slvt.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/7546fe8f902b88b8-s.p.1agee208_hwfr.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/a73419dd2ba2d841-s.p.2yee423r7ahpo.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/b12e986493c137cf-s.p.2njitm-prmz2_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/b2fa3ef4ca165ab4-s.p.12_ml6bnugnre.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/architechnika-mockups/_next/static/media/ba8e772932784a28-s.p.1ma0lyyj3vj55.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"hoja","param":null,"prefetchHints":0,"slots":{"children":{"name":"contact","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"OBWtSOe13bivoeBQl4_cm"}
